@@ -1,0 +1,13 @@
+<div class="container center">
+  <h1>Longest Word Game</h1>
+
+  <div class="list"><% @characters.each { |char| %> <li class="letters"><%= char %></li> <% } %> </div>
+    <p>Your current score: <%= session[:score] %></p>
+  <p>What is the longest word you can find?</p>
+  <form action="/score" method="post">
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    <input type="text" name="answer">
+    <input type="hidden" value="<%= @characters.join %>" name="characters">
+    <input type="submit" value="Play" id="btn">
+  </form>
+</div>
